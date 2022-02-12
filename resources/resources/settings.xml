@@ -1,17 +1,26 @@
 <resources>
     <properties>
+        <property id="name1" type="string"/>
         <property id="code1" type="string"/>
         <property id="digits1" type="number">6</property>
+
+        <property id="name2" type="string"/>
         <property id="code2" type="string"/>
         <property id="digits2" type="number">6</property>
     </properties>
 
     <settings>
+        <setting propertyKey="@Properties.name1" title="@Strings.name1">
+            <settingConfig type="alphaNumeric"></settingConfig>
+        </setting>
         <setting propertyKey="@Properties.code1" title="@Strings.code1">
             <settingConfig type="alphaNumeric"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits1" title="@Strings.digits">
             <settingConfig type="numeric" min="6" max="10"/>
+        </setting>
+        <setting propertyKey="@Properties.name2" title="@Strings.name1">
+            <settingConfig type="alphaNumeric"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code2" title="@Strings.code2">
             <settingConfig type="alphaNumeric"/>

@@ -2,6 +2,7 @@ import Toybox.Test;
 import Sha;
 import Hex;
 
+(:glance)
 module Hmac {
     const BLOCK_SIZE = 64;
 

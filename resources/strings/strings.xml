@@ -1,7 +1,11 @@
 <strings>
     <string id="AppName">OTPAuth</string>
 
-    <string id="code1">Secret 1</string>
-    <string id="code2">Secret 2</string>
+    <string scope="glance" id="noCodes">Add auth codes\nin Connect Mobile</string>
+
+    <string id="name1">Account #1</string>
+    <string id="name2">Account #2</string>
+    <string id="code1">Secret code #1</string>
+    <string id="code2">Secret code #2</string>
     <string id="digits">Number of digits</string>
 </strings>

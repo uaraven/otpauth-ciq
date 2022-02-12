@@ -1,6 +1,7 @@
 import Toybox.Test;
 import Hex;
 
+(:glance)
 module Sha {
 
     function encodeSha1(message) {
