@@ -2,7 +2,7 @@ import Toybox.Test;
 import Sha;
 import Hex;
 
-module HMac {
+module Hmac {
     const BLOCK_SIZE = 64;
 
     function hmacSha1(key, text) {
