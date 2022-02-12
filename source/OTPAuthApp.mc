@@ -2,6 +2,7 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
+(:glance)
 class OTPAuthApp extends Application.AppBase {
 
     function initialize() {
@@ -19,6 +20,10 @@ class OTPAuthApp extends Application.AppBase {
     // Return the initial view of your application here
     function getInitialView() as Array<Views or InputDelegates>? {
         return [ new OTPAuthView() ] as Array<Views or InputDelegates>;
+    }
+
+    function getGlanceView() {
+        return [ new OTPGlance() ];
     }
 
 }

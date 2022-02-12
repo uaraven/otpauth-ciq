@@ -1,3 +1,7 @@
 <strings>
     <string id="AppName">OTPAuth</string>
+
+    <string id="code1">Secret 1</string>
+    <string id="code2">Secret 2</string>
+    <string id="digits">Number of digits</string>
 </strings>
