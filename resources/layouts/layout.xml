@@ -1,3 +1,5 @@
 <layout id="MainLayout">
-    <bitmap id="id_monkey" x="center" y="center" filename="../drawables/monkey.png" />
+    <label id="no_codes" text="@Strings.NoCodes" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER"/>
+    <label id="code" x="center" y="45%" justification="Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER" font="Graphics.FONT_NUMBER_MEDIUM" color="Graphics.COLOR_WHITE"/>
+    <label id="name" x="center" y="65%" justification="Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER" font="Graphics.FONT_SMALL" color="Graphics.COLOR_LT_GRAY"/>
 </layout>

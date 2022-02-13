@@ -4,7 +4,6 @@ import Toybox.Application;
 import Otp;
 import Base32;
 
-(:glance)
 class OtpCode {
     private var otp;
     private var name as String;
@@ -27,7 +26,6 @@ class OtpCode {
 const MAX_CODES = 2;
 const INDEX_KEY = "lastUsedIndex";
 
-(:glance)
 class CodeStore {
     private var otps = {};
     private var lastUsedIndex as Numeric;
@@ -46,10 +44,11 @@ class CodeStore {
     }
 
     private function loadOtp(index) {
+        var enabled = Application.Properties.getValue("enabled" + index);
         var name = Application.Properties.getValue("name" + index);
         var secret = Application.Properties.getValue("code" + index);
         var digits = Application.Properties.getValue("digits" + index);
-        if ("".equals(name) || "".equals(secret)) {
+        if (!enabled || "".equals(secret)) {
             return null;
         }
         var otp = Otp.TotpFromBase32Digits(secret, digits);
@@ -65,30 +64,34 @@ class CodeStore {
     }
 
     function selectNext() {
-        if (otps.size() ==0) {
+        if (otps.size() == 0) {
             return;
         }
         var nextIndex = lastUsedIndex + 1;
         while (!otps.hasKey(nextIndex)) {
-            nextIndex += 1;
-            if (nextIndex > MAX_SIZE) {
+            if (nextIndex > MAX_CODES) {
                 nextIndex = 1;
+            } else {
+                nextIndex += 1;
             }
         }
+        lastUsedIndex = nextIndex;
         saveLastUsedIndex();
     }
 
     function selectPrev() {
-        if (otps.size() ==0) {
+        if (otps.size() == 0) {
             return;
         }
         var nextIndex = lastUsedIndex - 1;
         while (!otps.hasKey(nextIndex)) {
-            nextIndex -= 1;
             if (nextIndex <= 0) {
-                nextIndex = MAX_SIZE;
+                nextIndex = MAX_CODES;
+            } else {
+                nextIndex -= 1;
             }
         }
+        lastUsedIndex = nextIndex;
         saveLastUsedIndex();
     }
 

@@ -1,11 +1,18 @@
 <strings>
     <string id="AppName">OTPAuth</string>
+    <string scope="glance" id="GlanceTitle">2FA Codes</string>
 
-    <string scope="glance" id="noCodes">Add auth codes\nin Connect Mobile</string>
+    <string id="NoCodes">Add auth codes\nin Connect Mobile</string>
 
+    <string id="enabled">Enabled</string>
     <string id="name1">Account #1</string>
-    <string id="name2">Account #2</string>
     <string id="code1">Secret code #1</string>
+
+    <string id="name2">Account #2</string>
     <string id="code2">Secret code #2</string>
+
+    <string id="name3">Account #3</string>
+    <string id="code3">Secret code #3</string>
+
     <string id="digits">Number of digits</string>
 </strings>

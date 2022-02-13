@@ -87,6 +87,8 @@ module Otp {
 
     class Totp extends Hotp {
         private var timeStep = 30;
+        private var cachedCode as String;
+        private var cachedTime as Long;
 
         // secretKey - secret value encoded with Base32
         // digitCount - number of digits in the OTP code
@@ -94,21 +96,33 @@ module Otp {
         function initialize(secretKey, digitCount, timeStep) {
             Hotp.initialize(secretKey, digitCount);
             self.timeStep = timeStep;
+            self.cachedCode = null;
+            self.cachedTime = 0;
         }
 
         function codeForEpoch(epoch) as String {
-            setCounter((epoch / timeStep).toLong());
-            return generate();
+            var time = (epoch / timeStep).toLong();
+            if (time != cachedTime || cachedCode == null || "".equals(cachedCode)) {
+                System.println("generating code");
+                cachedTime = time;
+                setCounter(time);
+                cachedCode = generate();
+            }
+            return cachedCode;
         }
 
         function code() as String {
-            var now = Time.now().value() ;
-            setCounter((now / timeStep).toLong());
-            return generate();
+            var now = Time.now().value();
+            return codeForEpoch(now);
         }
 
         function getTimeStep() {
             return timeStep;
+        }
+
+        function getPercentTimeLeft()  as Float {
+            var now = Time.now().value();
+            return 1 - (now % timeStep).toFloat() / timeStep;
         }
     }
 
