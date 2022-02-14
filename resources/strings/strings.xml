@@ -5,6 +5,12 @@
 
     <string id="NoCodes">Add auth codes\nin Connect Mobile</string>
 
+    <string id="digits6">6</string>
+    <string id="digits7">7</string>
+    <string id="digits8">8</string>
+    <string id="digits9">9</string>
+    <string id="digits10">10</string>
+
     <string id="enabled1">Account #1 enabled</string>
     <string id="name1">Account #1</string>
     <string id="code1">Secret code #1</string>
