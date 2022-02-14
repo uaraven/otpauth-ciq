@@ -9,6 +9,9 @@
    id="svg5"
    inkscape:version="1.1.2 (b8e25be8, 2022-02-05)"
    sodipodi:docname="icon.svg"
+   inkscape:export-filename="/Users/oleksiivoronin/projects/connect_iq/otpauth-ciq/resources/drawables/launcher_icon.png"
+   inkscape:export-xdpi="9.6000004"
+   inkscape:export-ydpi="9.6000004"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,8 +28,8 @@
      showgrid="false"
      units="px"
      inkscape:zoom="0.97141649"
-     inkscape:cx="382.43123"
-     inkscape:cy="392.72547"
+     inkscape:cx="191.47297"
+     inkscape:cy="405.07857"
      inkscape:window-width="1800"
      inkscape:window-height="1097"
      inkscape:window-x="0"
@@ -46,7 +49,8 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
-       id="g2540">
+       id="g2540"
+       transform="translate(-3.042697,-3.9862684)">
       <g
          id="g1798">
         <rect
