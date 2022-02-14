@@ -1,5 +1,5 @@
 <strings>
-    <string id="AppName">OTPAuth</string>
+    <string id="AppName">2FA Codes</string>
     <string scope="glance" id="GlanceTitle">2FA Codes</string>
     <string scope="glance" id="LiveGlance">false</string>
 

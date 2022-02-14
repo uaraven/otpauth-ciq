@@ -24,11 +24,13 @@ class OTPLiveGlance extends WatchUi.GlanceView {
         View.onShow();
         timer = new Timer.Timer();
         timer.start(method(:timerCallback), 1000, true);
+        System.println("Starting glance");
     }
 
     function onHide() {
         View.onHide();
         timer.stop();
+        System.println("Closing glance");
     }
 
     // Resources are loaded here

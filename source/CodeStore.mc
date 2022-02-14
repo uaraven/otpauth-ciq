@@ -25,7 +25,7 @@ class OtpCode {
 }
 
 (:glance)
-const MAX_CODES = 2;
+const MAX_CODES = 5;
 (:glance)
 const INDEX_KEY = "lastUsedIndex";
 

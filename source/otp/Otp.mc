@@ -103,7 +103,6 @@ module Otp {
         function codeForEpoch(epoch) as String {
             var time = (epoch / timeStep).toLong();
             if (time != cachedTime || cachedCode == null || "".equals(cachedCode)) {
-                System.println("generating code");
                 cachedTime = time;
                 setCounter(time);
                 cachedCode = generate();

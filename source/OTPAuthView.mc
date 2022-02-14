@@ -1,6 +1,6 @@
 import Toybox.Graphics;
 import Toybox.WatchUi;
-
+import Toybox.System;
 import Toybox.Time;
 import Toybox.Timer;
 
@@ -14,6 +14,7 @@ class OTPAuthView extends WatchUi.View {
         View.initialize();
         codeStore = new CodeStore();
         updateTimer = new Timer.Timer();
+
     }
 
     // Load your resources here
@@ -26,6 +27,7 @@ class OTPAuthView extends WatchUi.View {
     // loading resources into memory.
     function onShow() as Void {
         updateTimer.start(method(:onTimer), 1000, true);
+        System.println("Starting widget");
     }
 
     // Update the view
@@ -68,6 +70,7 @@ class OTPAuthView extends WatchUi.View {
     // memory.
     function onHide() as Void {
         updateTimer.stop();
+        System.println("Stopping widget");
     }
 
     function onTimer() {
