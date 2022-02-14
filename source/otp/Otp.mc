@@ -124,6 +124,11 @@ module Otp {
             var now = Time.now().value();
             return 1 - (now % timeStep).toFloat() / timeStep;
         }
+
+         function getSecondsLeft()  as Float {
+            var now = Time.now().value();
+            return timeStep - (now % timeStep);
+        }
     }
 
     function TotpFromBase32(key as String) as Totp {

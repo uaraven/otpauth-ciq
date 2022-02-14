@@ -23,7 +23,7 @@ class OTPLiveGlance extends WatchUi.GlanceView {
     function onShow() {
         View.onShow();
         timer = new Timer.Timer();
-        timer.start(method(:timerCallback), 2000, true);
+        timer.start(method(:timerCallback), 1000, true);
     }
 
     function onHide() {
@@ -38,13 +38,16 @@ class OTPLiveGlance extends WatchUi.GlanceView {
     // onUpdate() is called periodically to update the View
     function onUpdate(dc) {
         View.onUpdate(dc);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         
         var w = dc.getWidth();
         var h = dc.getHeight();
 
-        dc.drawText(5, 5, Graphics.FONT_NUMBER_MILD, otp.getOtp().code(), Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(5, 85, Graphics.FONT_GLANCE, otp.getName(), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+
+        var font = h > 100 ? Graphics.FONT_NUMBER_MILD : Graphics.FONT_GLANCE_NUMBER;
+        dc.drawText(5, h/3, font, otp.getOtp().code(), Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(5, 2*h/3, Graphics.FONT_GLANCE, otp.getName(), Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
 
         var x = ((w -10) *  otp.getOtp().getPercentTimeLeft()).toNumber();
         dc.setPenWidth(4);
@@ -53,8 +56,10 @@ class OTPLiveGlance extends WatchUi.GlanceView {
         } else {
             dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
         }
+        dc.setPenWidth(4);
         dc.drawLine(5, h-5, x, h-5);
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(5);
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawLine(x, h-5, w-5, h-5);
     }
 }

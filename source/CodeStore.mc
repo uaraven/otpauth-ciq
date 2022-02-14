@@ -42,7 +42,7 @@ class CodeStore {
             }
         }
         lastUsedIndex = Application.Storage.getValue(INDEX_KEY);
-        if (lastUsedIndex == null || lastUsedIndex < 0 || lastUsedIndex > otps.size()) {
+        if (lastUsedIndex == null || lastUsedIndex < 0 || lastUsedIndex >= otps.size()) {
             lastUsedIndex = 0;
         }
     }
@@ -74,8 +74,6 @@ class CodeStore {
         var nextIndex = lastUsedIndex + 1;
         if (nextIndex >= otps.size()) {
             nextIndex = 0;
-        } else {
-            nextIndex += 1;
         }
         lastUsedIndex = nextIndex;
         saveLastUsedIndex();
@@ -88,9 +86,7 @@ class CodeStore {
         var nextIndex = lastUsedIndex - 1;
         if (nextIndex < 0) {
             nextIndex = otps.size()-1;
-        } else {
-            nextIndex -= 1;
-        }
+        } 
         lastUsedIndex = nextIndex;
         saveLastUsedIndex();
     }
