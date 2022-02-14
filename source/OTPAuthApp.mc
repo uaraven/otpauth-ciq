@@ -1,20 +1,17 @@
 import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
+import Toybox.Timer;
 
 (:glance)
 class OTPAuthApp extends Application.AppBase {
 
+    var liveUpdates = false;
+
     function initialize() {
         AppBase.initialize();
-    }
-
-    // onStart() is called on application start up
-    function onStart(state as Dictionary?) as Void {
-    }
-
-    // onStop() is called when your application is exiting
-    function onStop(state as Dictionary?) as Void {
+        var liveUpdatesS = Application.loadResource(Rez.Strings.LiveGlance);
+        liveUpdates = liveUpdatesS != null && "true".equals(liveUpdatesS);
     }
 
     // Return the initial view of your application here
@@ -23,7 +20,17 @@ class OTPAuthApp extends Application.AppBase {
     }
 
     function getGlanceView() {
-        return [ new OTPGlance() ];
+        if (liveUpdates) {
+            var store = new CodeStore();
+            var otp = store.getOtpCode();
+            if (otp == null) {
+                return [ new OTPSimpleGlance() ];
+            } else {
+                return [ new OTPLiveGlance(otp) ];
+            }
+        } else {
+            return [ new OTPSimpleGlance() ];
+        }
     }
 
 }

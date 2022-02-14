@@ -6,7 +6,7 @@ import Toybox.Timer;
 import Otp;
 
 (:glance)
-class OTPGlance extends WatchUi.GlanceView {
+class OTPSimpleGlance extends WatchUi.GlanceView {
 
     var title as String;
 
