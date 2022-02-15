@@ -63,6 +63,10 @@ class CodeStore {
         return otps.size() == 0;
     }
 
+    function size() {
+        return otps.size();
+    }
+
     function saveLastUsedIndex() {
         Application.Storage.setValue(INDEX_KEY, lastUsedIndex);
     }
@@ -89,6 +93,10 @@ class CodeStore {
         } 
         lastUsedIndex = nextIndex;
         saveLastUsedIndex();
+    }
+
+    function getIndex() as Numeric {
+        return lastUsedIndex;
     }
 
     function getOtpCode() as OtpCode {
