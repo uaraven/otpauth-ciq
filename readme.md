@@ -24,6 +24,14 @@ If there are more than one account configured you'll see dots indicating the act
 
 Flick the screen or use up/down buttons to scroll through the accounts. You can use tap or select button to go through the accounts as well. If your device doesn't support glances, you will have to use select button/tap, as up/down buttons will scroll through the widgets.
 
+**Why not always show auth code in glances?**
+
+Garmin devices support two ways of showing widget glances, for a devices that have enough resources, the glances can be updated every second. That works perfectly as the current 2FA code can be shown and updated as necessary along with the countdown bar that shows time till the code change.
+
+Devices that have less resources will give an application a change to update the glance only once. There is no way to know when the glance could be updated next time. The only guarantee is that will not happen in the next 30 seconds. Given than most (if not all) 2FA codes have a time window of 30 seconds there are good chances that the code displayed in the widget glance is out of date by the time you use it to authenticate. It might work, depending on the authentication server status, but it is way more reliable just to open the full widget and have up to date code displayed along with countdown timer.
+
+See the table below to check which devices support live updates.
+
 ## Set up
 
 TBD
@@ -36,11 +44,13 @@ TBD
 | Fenix 5 plus/5s plus/5x plus      | No        |
 | Fenix 6                           | Yes       |
 | Fenix 6pro                        | Yes, Live |
+| Enduro                            | Yes, Live |
 | Venu                              | No        | 
-| Venu Sq/Sq Music                  | No        | 
+| Venu Mercedes-Benz                | No        | 
+| Venu Sq/Sq Music                  | No        |
+| Venu 2/2s/2plus                   | Yes, Live | 
 | Fenix 7/7s/7x                     | Yes, Live |
 | Epix 2                            | Yes, Live |
-| Venu 2/2s/2plus                   | Yes, Live |
 | Forerunner 245                    | Yes       |
 | Forerunner 245 Music              | Yes, Live |
 | Forerunner 645/645 Music          | No        |
@@ -50,3 +60,4 @@ TBD
 | Vivoactive 3/3 Music /3 Music LTE | No        |
 | Vivoactive 4/4s                   | No        |
 | Instinct 2/2s                     | Yes       |
+

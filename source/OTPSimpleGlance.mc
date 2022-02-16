@@ -1,9 +1,6 @@
 import Toybox.System;
 import Toybox.WatchUi;
-import Toybox.Time;
-import Toybox.Timer;
 
-import Otp;
 
 (:glance)
 class OTPSimpleGlance extends WatchUi.GlanceView {

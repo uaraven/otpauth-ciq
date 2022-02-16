@@ -1,7 +1,6 @@
 import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
-import Toybox.Timer;
 import Otp;
 
 (:glance)
@@ -33,7 +32,6 @@ class OTPAuthApp extends Application.AppBase {
             return [ new OTPSimpleGlance() ];
         }
     }
-
 }
 
 function getApp() as OTPAuthApp {

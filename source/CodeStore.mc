@@ -21,7 +21,6 @@ class OtpCode {
     function getName() {
         return name;
     }
-
 }
 
 (:glance)
@@ -100,6 +99,9 @@ class CodeStore {
     }
 
     function getOtpCode() as OtpCode {
+        if (lastUsedIndex < 0 || lastUsedIndex >= otps.size()) {
+            lastUsedIndex = 0;
+        }
         if (otps.size() == 0) {
             return null;
         }
