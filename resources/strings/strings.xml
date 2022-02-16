@@ -1,7 +1,9 @@
 <strings>
     <string id="AppName">2FA Codes</string>
     <string scope="glance" id="GlanceTitle">2FA Codes</string>
+
     <string scope="glance" id="LiveGlance">false</string>
+    <string id="Instinct">false</string>
 
     <string id="NoCodes">Add auth codes\nin Connect Mobile</string>
 
