@@ -34,7 +34,7 @@ See the table below to check which devices support live updates.
 
 ## Set up
 
-TBD
+See examples in the [wiki](https://github.com/uaraven/otpauth-ciq/wiki)
 
 ## Compatibility
 
