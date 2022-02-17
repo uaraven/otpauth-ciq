@@ -43,8 +43,7 @@ If the "Glances" column contains word "Live" then live updates for glances are s
 
 Devices listed in the table below were tested at least with the simulator. Bear in mind that Garmin simulator is not 100% accurate and therefore there might be various problems with some devices that were not detected. [Open an issue]((https://github.com/uaraven/otpauth-ciq/issues)) and describe the problem to get it fixed.
 
-Note: Device might support glances live update, but if they are not enabled in the application source code, they will not work. Open a ticket in the [issue tracker](https://github.com/uaraven/otpauth-ciq/issues) if you think your device
-support is inadequate. 
+Note: Device might support glances live update, but there is no way to check this on the device. If I did not enable live updates in the application source code, then live update will not work and you'll get static "2FA Auth" widget in the widget carousel. Open a ticket in the [issue tracker](https://github.com/uaraven/otpauth-ciq/issues) if you think your device should work with live updates. 
 
 
 | Device                            | Glances   |
