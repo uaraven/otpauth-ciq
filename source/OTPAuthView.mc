@@ -41,7 +41,7 @@ class OTPAuthView extends WatchUi.View {
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
         var r = min(dc.getWidth(), dc.getHeight());
-        indicatorSize = r / 70;
+        indicatorSize = r / 65;
         if (codeStore.size() % 2 == 0) {
             startingAngle = 270 + indicatorAngle/2 * codeStore.size()/2;
         } else {

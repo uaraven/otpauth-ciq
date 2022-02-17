@@ -36,12 +36,22 @@ See the table below to check which devices support live updates.
 
 TBD
 
-## Supported devices
+## Compatibility
+
+2FA Auth should run on any Garmin watch supporting Connect IQ version 3.1 or higher. 
+If the "Glances" column contains word "Live" then live updates for glances are supported for the device. 
+
+Devices listed in the table below were tested at least with the simulator. Bear in mind that Garmin simulator is not 100% accurate and therefore there might be various problems with some devices that were not detected. [Open an issue]((https://github.com/uaraven/otpauth-ciq/issues)) and describe the problem to get it fixed.
+
+Note: Device might support glances live update, but if they are not enabled in the application source code, they will not work. Open a ticket in the [issue tracker](https://github.com/uaraven/otpauth-ciq/issues) if you think your device
+support is inadequate. 
+
 
 | Device                            | Glances   |
 |:----------------------------------|:---------:|
 | Fenix 5/5s/5x                     | No        |
 | Fenix 5 plus/5s plus/5x plus      | No        |
+| Fenix Chronos                     | No        |
 | Fenix 6                           | Yes       |
 | Fenix 6pro                        | Yes, Live |
 | Enduro                            | Yes, Live |
@@ -51,6 +61,7 @@ TBD
 | Venu 2/2s/2plus                   | Yes, Live | 
 | Fenix 7/7s/7x                     | Yes, Live |
 | Epix 2                            | Yes, Live |
+| Forerunner 55                     | Yes       |
 | Forerunner 245                    | Yes       |
 | Forerunner 245 Music              | Yes, Live |
 | Forerunner 645/645 Music          | No        |
@@ -60,4 +71,12 @@ TBD
 | Vivoactive 3/3 Music /3 Music LTE | No        |
 | Vivoactive 4/4s                   | No        |
 | Instinct 2/2s                     | Yes       |
+| D2 Air/Delta/Delta PX/Delta S     | No        |
+| D2 Air X10                        | Yes, Live |
+| Descent Mk2/Mk2i/Mk2 S            | Yes, Live |
+| Rey, Darth Vader, Captain Marvel, First Avenger       | No        |
+| MARQ (Various)                    | Yes       |
+
+
+
 
