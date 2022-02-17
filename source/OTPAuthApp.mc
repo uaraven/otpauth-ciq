@@ -1,6 +1,7 @@
 import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
+import Toybox.System;
 import Otp;
 
 (:glance)
@@ -10,8 +11,8 @@ class OTPAuthApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
-        var liveUpdatesS = Application.loadResource(Rez.Strings.LiveGlance);
-        liveUpdates = liveUpdatesS != null && "true".equals(liveUpdatesS);
+        liveUpdates = Application.loadResource(Rez.JsonData.LiveUpdates);
+        System.println("LiveUpdates: " + liveUpdates);
     }
 
     // Return the initial view of your application here

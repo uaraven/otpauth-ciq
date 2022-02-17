@@ -1,0 +1,4 @@
+<resources>
+    <jsonData scope="glance" id="LiveUpdates">false</jsonData>
+    <jsonData id="Instinct">false</jsonData>
+</resources>
