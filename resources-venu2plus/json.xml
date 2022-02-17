@@ -1,0 +1,3 @@
+<resources>
+    <jsonData scope="glance" id="LiveUpdates">true</jsonData>
+</resources>

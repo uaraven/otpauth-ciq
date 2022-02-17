@@ -28,7 +28,7 @@ class OTPAuthView extends WatchUi.View {
         View.initialize();
         codeStore = new CodeStore();
         updateTimer = new Timer.Timer();
-        isInstinct = "true".equals( WatchUi.loadResource(Rez.Strings.Instinct));
+        isInstinct = WatchUi.loadResource(Rez.JsonData.Instinct);
         var settings = System.getDeviceSettings();
         screenShape = settings.screenShape;
     }
