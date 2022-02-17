@@ -78,5 +78,6 @@ support is inadequate.
 | MARQ (Various)                    | Yes       |
 
 
+# License
 
-
+The source code is released under the [MIT license](license.md)

@@ -57,7 +57,7 @@ module Sha {
 
         var res = new [20];
         for (var i = 0; i < 20; i++) {
-            res[i] = words[i>>2] >> (8 * (3 - (i & 0x03))) & 0xFF ;
+            res[i] = words[i >> 2] >> (8 * (3 - (i & 0x03))) & 0xFF ;
         }
 
         return res;
