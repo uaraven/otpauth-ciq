@@ -11,22 +11,35 @@ class OTPGlance extends WatchUi.GlanceView {
     var otp;
     var timer;
     var firstRun as Boolean;
+    var liveGlances as Boolean;
     var title as String;
+    var refreshCount;
 
     function initialize(otp) {
         GlanceView.initialize();
         self.otp = otp;
         self.firstRun = true;
+        self.liveGlances = false;
+        self.refreshCount = 0;
     }
 
     function timerCallback() {
         WatchUi.requestUpdate();
+        if (!self.firstRun) {            
+            if (refreshCount > 3 && !liveGlances)  { // if liveGlances hasn't changed to true in 3 refreshes, just forget about it
+                return;
+            }
+            if (refreshCount < 5) {
+                refreshCount +=1;  
+            }
+            timer.start(method(:timerCallback), 1000, false);
+        }
     }
 
     function onShow() {
         View.onShow();
         timer = new Timer.Timer();
-        timer.start(method(:timerCallback), 1000, true);
+        timer.start(method(:timerCallback), 250, false);
         System.println("Starting glance");
     }
 
@@ -80,11 +93,12 @@ class OTPGlance extends WatchUi.GlanceView {
 
     // onUpdate() is called periodically to update the View
     function onUpdate(dc) {
-       if (firstRun || self.otp == null) {
-           drawSimpleGlance(dc);
-           firstRun = false;
-       } else {
-           drawLiveGlance(dc);
-       }
+        if (firstRun || self.otp == null) {
+            drawSimpleGlance(dc);
+            firstRun = false;
+        } else {
+            self.liveGlances = true;
+            drawLiveGlance(dc);
+        }
     }
 }
