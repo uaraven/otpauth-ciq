@@ -2,16 +2,20 @@ import Toybox.System;
 import Toybox.WatchUi;
 import Toybox.Time;
 import Toybox.Timer;
+import Toybox.Application;
 
 import Otp;
 
 (:glance)
 class OTPGlance extends WatchUi.GlanceView {
 
+    const LIVE_UPDATE = "liveUpdate";
+
     var otp;
     var timer;
     var firstRun as Boolean;
     var liveGlances as Boolean;
+    var liveGlancesStored = false;
     var title as String;
     var refreshCount;
 
@@ -21,18 +25,33 @@ class OTPGlance extends WatchUi.GlanceView {
         self.firstRun = true;
         self.liveGlances = false;
         self.refreshCount = 0;
+
+        var lv = Application.Storage.getValue(LIVE_UPDATE);
+        if (lv != null && lv == true) {
+            self.liveGlances = true;
+            self.liveGlancesStored = true;
+            System.println("Enabling live updates");
+        }
     }
 
     function timerCallback() {
         WatchUi.requestUpdate();
-        if (!self.firstRun) {            
-            if (refreshCount > 3 && !liveGlances)  { // if liveGlances hasn't changed to true in 3 refreshes, just forget about it
-                return;
-            }
-            if (refreshCount < 5) {
-                refreshCount +=1;  
-            }
+        if (liveGlances) {
             timer.start(method(:timerCallback), 1000, false);
+            if (!liveGlancesStored) { // save 
+                Application.Storage.setValue(LIVE_UPDATE, true);
+                self.liveGlancesStored = true;
+            }
+        } else {
+            if (!self.firstRun) {
+                if (refreshCount > 3 && !liveGlances)  { // if liveGlances hasn't changed to true in 3 refreshes, just forget about it
+                    return;
+                }
+                if (refreshCount < 5) {
+                    refreshCount +=1;  
+                }
+                timer.start(method(:timerCallback), 1000, false);
+            }
         }
     }
 
