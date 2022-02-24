@@ -113,7 +113,7 @@ class OTPGlance extends WatchUi.GlanceView {
 
     // onUpdate() is called periodically to update the View
     function onUpdate(dc) {
-        if (firstRun || self.otp == null || !self.liveGlances) {
+        if (firstRun || self.otp == null && !liveGlances) {
             drawSimpleGlance(dc);
             firstRun = false;
         } else {
