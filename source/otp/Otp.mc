@@ -141,6 +141,12 @@ module Otp {
         var totp = new Totp(secret, digits, 30);
         return totp;
     }
+
+    function TotpFromBase32DigitsTimeStep(key as String, digits as Numeric, timeStep as Numeric) as Totp {
+        var secret = Base32.base32decode(key);
+        var totp = new Totp(secret, digits, timeStep);
+        return totp;
+    }
     
     (:test)
     function TestOtp(logger as Test.Logger) {

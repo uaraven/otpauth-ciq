@@ -24,7 +24,7 @@ class OtpCode {
 }
 
 (:glance)
-const MAX_CODES = 5;
+const MAX_CODES = 10;
 (:glance)
 const INDEX_KEY = "lastUsedIndex";
 
@@ -51,10 +51,11 @@ class CodeStore {
         var name = Application.Properties.getValue("name" + index);
         var secret = Application.Properties.getValue("code" + index);
         var digits = Application.Properties.getValue("digits" + index);
+        var timeStep = Application.Properties.getValue("timeStep" + index);
         if (!enabled || "".equals(secret)) {
             return null;
         }
-        var otp = Otp.TotpFromBase32Digits(secret, digits);
+        var otp = Otp.TotpFromBase32DigitsTimeStep(secret, digits, timeStep);
         return new OtpCode(otp, name);
     }
 

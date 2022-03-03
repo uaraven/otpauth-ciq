@@ -33,5 +33,26 @@
     <string id="name5">Account #5</string>
     <string id="code5">Secret code #5</string>
 
+    <string id="enabled6">Account #6 enabled</string>
+    <string id="name6">Account #6</string>
+    <string id="code6">Secret code #6</string>
+
+    <string id="enabled7">Account #7 enabled</string>
+    <string id="name7">Account #7</string>
+    <string id="code7">Secret code #7</string>
+
+    <string id="enabled8">Account #8 enabled</string>
+    <string id="name8">Account #8</string>
+    <string id="code8">Secret code #8</string>
+
+    <string id="enabled9">Account #9 enabled</string>
+    <string id="name9">Account #9</string>
+    <string id="code9">Secret code #9</string>
+
+    <string id="enabled10">Account #10 enabled</string>
+    <string id="name10">Account #10</string>
+    <string id="code10">Secret code #10</string>
+
     <string id="digits">Number of digits</string>
+    <string id="timeStep">Code changed interval, seconds</string>
 </strings>
