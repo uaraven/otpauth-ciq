@@ -30,7 +30,7 @@ const INDEX_KEY = "lastUsedIndex";
 
 (:glance)
 class CodeStore {
-    private var otps = [];
+    private var otps as Array<OtpCode> = [];
     private var lastUsedIndex as Numeric;
 
     function initialize() {
@@ -99,7 +99,7 @@ class CodeStore {
         return lastUsedIndex;
     }
 
-    function getOtpCode() as OtpCode {
+    function getOtpCode() as OtpCode? {
         if (lastUsedIndex < 0 || lastUsedIndex >= otps.size()) {
             lastUsedIndex = 0;
         }

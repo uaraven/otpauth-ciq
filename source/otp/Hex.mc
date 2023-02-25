@@ -1,6 +1,8 @@
+import Toybox.Lang;
+
 module Hex {
 
-    function bytesToHex(bytes) as String {
+    function bytesToHex(bytes as Array<Number>) as String {
         var s = "";
         for (var i = 0; i < bytes.size(); i++) {
             var l = bytes[i] & 0x0F;

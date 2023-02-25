@@ -1,5 +1,6 @@
 import Toybox.Time;
 import Toybox.Test;
+import Toybox.Lang;
 
 import Hmac;
 import Base32;
@@ -30,7 +31,7 @@ module Otp {
             return digits;
         }
 
-        function code() as String {
+        function code() {
             return "";
         }
 
@@ -59,7 +60,7 @@ module Otp {
         protected function generate() as String {
             var text = intToBytes(counter);
             counter += 1;
-            var hash = Hmac.hmacSha1(getSecret(), text);
+            var hash = Hmac.hmacSha1(getSecret(), text) as Array<Number>;
             var offset = (hash[hash.size()-1] & 0x0F).toNumber();
             var binary = ((hash[offset] & 0x7f) << 24) |
                          ((hash[offset+1] & 0xff) << 16) |
@@ -87,7 +88,7 @@ module Otp {
 
     class Totp extends Hotp {
         private var timeStep = 30;
-        private var cachedCode as String;
+        private var cachedCode as String or Null;
         private var cachedTime as Long;
 
         // secretKey - secret value encoded with Base32
@@ -97,7 +98,7 @@ module Otp {
             Hotp.initialize(secretKey, digitCount);
             self.timeStep = timeStep;
             self.cachedCode = null;
-            self.cachedTime = 0;
+            self.cachedTime = 0 as Long;
         }
 
         function codeForEpoch(epoch) as String {

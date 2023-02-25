@@ -1,12 +1,13 @@
+import Toybox.Lang;
 import Toybox.Test;
 import Hex;
 
 (:glance)
 module Sha {
 
-    function encodeSha1(message) {
+    function encodeSha1(message as Array<Number>) as Array<Number> {
         var msgSize = message.size();
-        var blocks = new [((msgSize+8)/64 + 1)*16];
+        var blocks = new [((msgSize+8)/64 + 1)*16] as Array<Number>;
         var blocksSize = blocks.size();
 
         for (var i = 0; i < blocksSize; i++) {
@@ -65,9 +66,9 @@ module Sha {
 
     const BLOCK_SIZE = 64;
  
-    function HMac(key, text) {
+    function HMac(key as Array<Number>, text) as Array<Number> {
         if (key.size() > BLOCK_SIZE) {
-            key = encodeSha1(key);
+            key = encodeSha1(key) as Array<Number>;
         }
         
         // HMAC = H(K XOR opad, H(K XOR ipad, text)), where H = SHA1

@@ -1,3 +1,4 @@
+import Toybox.Lang;
 import Toybox.Test;
 import Sha;
 import Hex;
@@ -6,9 +7,9 @@ import Hex;
 module Hmac {
     const BLOCK_SIZE = 64;
 
-    function hmacSha1(key, text) {
+    function hmacSha1(key as Array<Number>, text) as Array<Number> {
         if (key.size() > BLOCK_SIZE) {
-            key = Sha.encodeSha1(key);
+            key = Sha.encodeSha1(key) as Array<Number>;
         }
         
         // HMAC = H(K XOR opad, H(K XOR ipad, text)), where H = SHA1

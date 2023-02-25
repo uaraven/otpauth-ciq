@@ -1,6 +1,8 @@
 import Toybox.System;
 import Toybox.Test;
 import Toybox.StringUtil;
+import Toybox.Lang;
+
 
 (:glance)
 module Base32 {
@@ -73,7 +75,7 @@ module Base32 {
     }
 
 
-    function arraysEqual(a, b) as Boolean {
+    function arraysEqual(a as Array<Number>, b as Array<Number>) as Boolean {
         if (a.size() != b.size()) {
             return false;
         }
