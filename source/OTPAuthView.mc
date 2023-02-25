@@ -5,6 +5,7 @@ import Toybox.System;
 import Toybox.Time;
 import Toybox.Timer;
 import Toybox.Math;
+import Toybox.Lang;
 
 var codeStore;
 
@@ -28,7 +29,7 @@ class OTPAuthView extends WatchUi.View {
         View.initialize();
         codeStore = new CodeStore();
         updateTimer = new Timer.Timer();
-        isInstinct = WatchUi.loadResource(Rez.JsonData.Instinct);
+        isInstinct = WatchUi.loadResource(Rez.JsonData.Instinct) as Boolean;
         var settings = System.getDeviceSettings();
         screenShape = settings.screenShape;
     }
@@ -76,9 +77,9 @@ class OTPAuthView extends WatchUi.View {
     }
 
     function drawRoundScreen(dc as Dc) as Void {
-        var code = View.findDrawableById("code");
-        var name = View.findDrawableById("name");
-        var noCodes = View.findDrawableById("no_codes");
+        var code = View.findDrawableById("code") as WatchUi.Text;
+        var name = View.findDrawableById("name") as WatchUi.Text;
+        var noCodes = View.findDrawableById("no_codes") as WatchUi.Text;
         if (codeStore.isEmpty()) {
             code.setText("");
             name.setText("");
@@ -106,7 +107,7 @@ class OTPAuthView extends WatchUi.View {
     function drawTimeStepRound(dc as Dc) as Void {
         var percentTimeLeft = codeStore.getOtpCode().getOtp().getPercentTimeLeft();
     
-        dc.setPenWidth(4);
+        dc.setPenWidth(8);
         var start = 90;
         var end = (360*percentTimeLeft + 90).toNumber();
         var w = dc.getWidth();
@@ -121,7 +122,7 @@ class OTPAuthView extends WatchUi.View {
     function drawTimeStepSquare(dc as Dc) as Void {
         var percentTimeLeft = codeStore.getOtpCode().getOtp().getPercentTimeLeft();
     
-        dc.setPenWidth(4);
+        dc.setPenWidth(8);
         var w = dc.getWidth();
         var h = dc.getHeight();
         var end = ((w-10)*percentTimeLeft).toNumber();
@@ -135,7 +136,7 @@ class OTPAuthView extends WatchUi.View {
     function drawTimeStepInstinct(dc as Dc) as Void {
         var percentTimeLeft = codeStore.getOtpCode().getOtp().getPercentTimeLeft();
     
-        dc.setPenWidth(4);
+        dc.setPenWidth(6);
         var start = 90;
         var end = (360*percentTimeLeft + 90).toNumber();
         var w = dc.getWidth();

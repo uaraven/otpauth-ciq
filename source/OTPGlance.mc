@@ -3,6 +3,7 @@ import Toybox.WatchUi;
 import Toybox.Time;
 import Toybox.Timer;
 import Toybox.Application;
+import Toybox.Lang;
 
 import Otp;
 
@@ -16,7 +17,7 @@ class OTPGlance extends WatchUi.GlanceView {
     var firstRun as Boolean;
     var liveGlances as Boolean;
     var liveGlancesStored = false;
-    var title as String;
+    var title as String or Null;
     var refreshCount;
 
     function initialize(otp) {
@@ -35,7 +36,7 @@ class OTPGlance extends WatchUi.GlanceView {
         }
     }
 
-    function timerCallback() {
+    function timerCallback() as Void {
         WatchUi.requestUpdate();
         if (liveGlances) {
             timer.start(method(:timerCallback), 1000, false);
@@ -98,15 +99,14 @@ class OTPGlance extends WatchUi.GlanceView {
         dc.drawText(5, 2*h/3, Graphics.FONT_GLANCE, otp.getName(), Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
 
         var x = ((w -10) *  otp.getOtp().getPercentTimeLeft()).toNumber();
-        dc.setPenWidth(4);
         if (otp.getOtp().getSecondsLeft() < 5) {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
         } else {
             dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
         }
-        dc.setPenWidth(4);
+        dc.setPenWidth(7);
         dc.drawLine(5, h-5, x, h-5);
-        dc.setPenWidth(5);
+        dc.setPenWidth(7);
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawLine(x, h-5, w-5, h-5);
     }
