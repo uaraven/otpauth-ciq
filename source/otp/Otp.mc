@@ -47,7 +47,7 @@ module Otp {
             counter = 0;
         }
 
-        protected function intToBytes(v as Numeric) as Lang.Array {
+        protected function intToBytes(v as Numeric) {
             var result = [0,0,0,0,0,0,0,0];
             for (var i = 7; i >= 0 ;i--) {
                 var b = v & 0xFF;
@@ -159,9 +159,7 @@ module Otp {
         if (!expected.equals(actual)) {
             logger.debug(Lang.format("Expected: '$1$', actual: '$2$'", [expected, actual]));
             return false;
-        } else {
-            return true;
-        }
+        } 
 
         expected = "07081804";
         actual = otp.codeForEpoch(1111111109);

@@ -12,7 +12,8 @@ class OTPAuthApp extends Application.AppBase {
     }
 
     function getInitialView() as Array<Views or InputDelegates>? {
-        return [ new OTPAuthView(), new OTPAuthInput() ] as Array<Views or InputDelegates>;
+        var view = new OTPAuthView();
+        return [view , new OTPAuthInput(view) ] as Array<Views or InputDelegates>;
     }
 
     function getGlanceView() {

@@ -64,25 +64,6 @@ module Sha {
         return res;
     }
 
-    const BLOCK_SIZE = 64;
- 
-    function HMac(key as Array<Number>, text) as Array<Number> {
-        if (key.size() > BLOCK_SIZE) {
-            key = encodeSha1(key) as Array<Number>;
-        }
-        
-        // HMAC = H(K XOR opad, H(K XOR ipad, text)), where H = SHA1
-        var ipad = new [BLOCK_SIZE];
-        var opad = new [BLOCK_SIZE];
-        for (var i = 0; i < BLOCK_SIZE; i++) {
-            var k = i < key.size() ? key[i] : 0x00;
-            ipad[i] = k ^ 0x36;
-            opad[i] = k ^ 0x5C;
-        }
-
-        return encodeSha1(opad.addAll(encodeSha1(ipad.addAll(text))));
-    }
-
     function rol(num, cnt) {
         var mask = (1 << cnt) - 1;
         var leftPart = (num << cnt) & (~mask);
