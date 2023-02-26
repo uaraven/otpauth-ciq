@@ -9,6 +9,12 @@ import Toybox.Lang;
 
 var codeStore;
 
+var code as WatchUi.Text or Null;
+var name as WatchUi.Text or Null;
+var screenHeight as Number or Null;
+var codeY as Number or Null;
+var nameY as Number or Null;
+
 class OTPAuthView extends WatchUi.View {
 
     const indicatorAngle = 7.5;
@@ -24,6 +30,8 @@ class OTPAuthView extends WatchUi.View {
     var instinctR = 0;
 
     var screenShape;
+
+    var noCodes as WatchUi.Text or Null;
 
     function initialize() {
         View.initialize();
@@ -41,6 +49,15 @@ class OTPAuthView extends WatchUi.View {
     // Load your resources here
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
+        
+        code = View.findDrawableById("code") as WatchUi.Text;
+        name = View.findDrawableById("name") as WatchUi.Text;
+        noCodes = View.findDrawableById("no_codes") as WatchUi.Text;
+
+        screenHeight = dc.getHeight();
+        codeY = code.locY;
+        nameY = name.locY;
+
         var r = min(dc.getWidth(), dc.getHeight());
         indicatorSize = r / 65;
         if (codeStore.size() % 2 == 0) {
@@ -48,7 +65,7 @@ class OTPAuthView extends WatchUi.View {
         } else {
             startingAngle = 270 + indicatorAngle * (codeStore.size()/2).toNumber();
         }
-        indicatorRadius = r/2 - indicatorSize - 10;
+        indicatorRadius = r/2 - indicatorSize - 20;
         if (isInstinct) {
             if (dc.getWidth() == 176) { //instinct 2 
                 instinctOffset = 31;
@@ -77,9 +94,6 @@ class OTPAuthView extends WatchUi.View {
     }
 
     function drawRoundScreen(dc as Dc) as Void {
-        var code = View.findDrawableById("code") as WatchUi.Text;
-        var name = View.findDrawableById("name") as WatchUi.Text;
-        var noCodes = View.findDrawableById("no_codes") as WatchUi.Text;
         if (codeStore.isEmpty()) {
             code.setText("");
             name.setText("");
