@@ -7,17 +7,12 @@ import Toybox.Timer;
 import Toybox.Math;
 import Toybox.Lang;
 
-var codeStore;
-
-var code as WatchUi.Text or Null;
-var name as WatchUi.Text or Null;
-var screenHeight as Number or Null;
-var codeY as Number or Null;
-var nameY as Number or Null;
-
 class OTPAuthView extends WatchUi.View {
 
     const indicatorAngle = 7.5;
+    const ANIM_TIME = 0.20;
+
+    var codeStore;
 
     var updateTimer;
 
@@ -32,6 +27,16 @@ class OTPAuthView extends WatchUi.View {
     var screenShape;
 
     var noCodes as WatchUi.Text or Null;
+    var code as WatchUi.Text or Null;
+    var name as WatchUi.Text or Null;
+    
+    var screenHeight as Number or Null;
+    
+    var codeY as Number or Null;
+    var nameY as Number or Null;
+
+    var scrolling as Boolean = false;
+
 
     function initialize() {
         View.initialize();
@@ -77,11 +82,57 @@ class OTPAuthView extends WatchUi.View {
         }
     }
 
+    function nextCode() {
+        if (codeStore.size() == 1) {
+            return;
+        }
+        scrolling = true; // disable showing new code until we scrolled the old one out of view
+        codeStore.selectNext();
+        codeStore.getOtpCode().getOtp().code(); // ensure the new code is calculated *before* we start animation
+
+        // start scrolling
+        animateOut(code, codeY, -40, method(:scrollCodeInFromBelow));
+        animateOut(name, nameY, -20, method(:scrollNameInFromBelow));
+    }
+
+    function prevCode() {
+        if (codeStore.size() == 1) {
+            return;
+        }
+        scrolling = true; // disable showing new code until we scrolled the old one out of view
+        codeStore.selectPrev();
+        codeStore.getOtpCode().getOtp().code(); // ensure the new code is calculated *before* we start animation
+
+        // start scrolling
+        animateOut(code, codeY, screenHeight+20, method(:scrollCodeInFromAbove));
+        animateOut(name, nameY, screenHeight+40, method(:scrollNameInFromAbove));
+    }
+
+
+    function scrollCodeInFromBelow() as Void {
+        scrolling = false; // enable showing the new code
+        animateIn(code, screenHeight+20, codeY, null);
+    }
+
+    function scrollNameInFromBelow() as Void {
+        animateIn(name, screenHeight+40, nameY, null);
+    }
+
+    function scrollCodeInFromAbove() as Void {
+        scrolling = false; // enable showing the new code
+        animateIn(code, -40, codeY, null);
+    }
+
+    function scrollNameInFromAbove() as Void {
+        animateIn(name, -20, nameY, null);
+    }
+
+
     // Called when this View is brought to the foreground. Restore
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() as Void {
-        updateTimer.start(method(:onTimer), 1000, true);
+        updateTimer.start(method(:onTimer), 500, true);
         System.println("Starting widget");
     }
 
@@ -94,14 +145,16 @@ class OTPAuthView extends WatchUi.View {
     }
 
     function drawRoundScreen(dc as Dc) as Void {
-        if (codeStore.isEmpty()) {
-            code.setText("");
-            name.setText("");
-        } else {
-            var otpCode = codeStore.getOtpCode();
-            noCodes.setText("");
-            code.setText(otpCode.getOtp().code());
-            name.setText(otpCode.getName());
+        if (!scrolling) {
+            if (codeStore.isEmpty()) {
+                code.setText("");
+                name.setText("");
+            } else {
+                var otpCode = codeStore.getOtpCode();
+                noCodes.setText("");
+                code.setText(otpCode.getOtp().code());
+                name.setText(otpCode.getName());
+            }
         }
         View.onUpdate(dc);
         if (!codeStore.isEmpty()) {
@@ -198,4 +251,12 @@ class OTPAuthView extends WatchUi.View {
         WatchUi.requestUpdate();
     }
 
+    function animateOut(object, ystart, yend, callback) {
+        WatchUi.animate(object, :locY, WatchUi.ANIM_TYPE_EASE_OUT, ystart, yend, ANIM_TIME, callback);
+    }
+
+    function animateIn(object, ystart, yend, callback) {
+        WatchUi.animate(object, :locY, WatchUi.ANIM_TYPE_EASE_IN, ystart, yend, ANIM_TIME, callback);
+    }
 }
+
