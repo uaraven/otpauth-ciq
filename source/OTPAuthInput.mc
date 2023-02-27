@@ -15,13 +15,17 @@ class OTPAuthInput extends WatchUi.BehaviorDelegate {
     }
 
     function onNextPage() {
-        WatchUi.cancelAllAnimations();
+        if (WatchUi has :cancelAllAnimations) {
+            WatchUi.cancelAllAnimations();
+        }
         otpView.nextCode();
         return true;
     }
 
     function onPreviousPage() {
-        WatchUi.cancelAllAnimations();
+        if (WatchUi has :cancelAllAnimations) {
+            WatchUi.cancelAllAnimations();
+        }
         otpView.prevCode();
         return true;
     }
