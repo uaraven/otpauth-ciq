@@ -50,7 +50,7 @@ Devices listed in the table below were tested at least with the simulator. Bear 
 | Fenix 5 plus/5s plus/5x plus      | No        |
 | Fenix Chronos                     | No        |
 | Fenix 6                           | Yes       |
-| Fenix 6pro                        | Yes, Live |
+| Fenix 6pro                        | Yes*      |
 | Enduro                            | Yes       |
 | Venu                              | No        | 
 | Venu Mercedes-Benz                | No        | 
@@ -73,6 +73,7 @@ Devices listed in the table below were tested at least with the simulator. Bear 
 | Vivoactive 3/3 Music /3 Music LTE | No        |
 | Vivoactive 4/4s                   | No        |
 | Instinct 2/2s                     | Yes       |
+| Descent G1                        | Yes       |
 | D2 Air/Delta/Delta PX/Delta S     | No        |
 | D2 Air X10                        | Yes, Live |
 | Descent Mk2/Mk2i/Mk2 S            | Yes, Live |
@@ -80,6 +81,8 @@ Devices listed in the table below were tested at least with the simulator. Bear 
 | MARQ (Various)                    | Yes       |
 | MARQ 2                            | Yes, Live |
 
+\* Fenix 6 pro supports live glances, but there is not enough memory to calculate 2FA code in glance mode. I am investigating possible 
+solutions.
 
 # License
 
