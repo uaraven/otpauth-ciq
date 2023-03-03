@@ -11,6 +11,7 @@ import Otp;
 class OTPGlance extends WatchUi.GlanceView {
 
     const LIVE_UPDATE = "liveUpdate";
+    const LINE_HEIGHT = 7;
 
     var otp;
     var timer;
@@ -79,7 +80,6 @@ class OTPGlance extends WatchUi.GlanceView {
         View.onUpdate(dc);
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         
-        var w = dc.getWidth();
         var h = dc.getHeight();
 
         dc.drawText(5, h/2, Graphics.FONT_MEDIUM, title, Graphics.TEXT_JUSTIFY_LEFT + Graphics.TEXT_JUSTIFY_VCENTER);
@@ -91,12 +91,21 @@ class OTPGlance extends WatchUi.GlanceView {
         var w = dc.getWidth();
         var h = dc.getHeight();
 
+        var codeHeight = dc.getFontHeight(Graphics.FONT_GLANCE_NUMBER) - dc.getFontDescent(Graphics.FONT_GLANCE_NUMBER);
+        var nameHeight = dc.getFontHeight(Graphics.FONT_GLANCE);
+
+        var dividerHeight = (dc.getHeight() - codeHeight - nameHeight - LINE_HEIGHT) / 2;
+        if (dividerHeight < 0) {
+            dividerHeight = 0;
+        }
+
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-        var font = h > 100 ? Graphics.FONT_NUMBER_MILD : Graphics.FONT_GLANCE_NUMBER;
-        dc.drawText(5, h/3, font, otp.getOtp().code(), Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(5, 0, Graphics.FONT_GLANCE_NUMBER, otp.getOtp().code(), Graphics.TEXT_JUSTIFY_LEFT);
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(5, 2*h/3, Graphics.FONT_GLANCE, otp.getName(), Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+
+        dc.drawText(5, dividerHeight + codeHeight, Graphics.FONT_GLANCE, otp.getName(), Graphics.TEXT_JUSTIFY_LEFT);
+        var lineY = h - LINE_HEIGHT;
 
         var x = ((w -10) *  otp.getOtp().getPercentTimeLeft()).toNumber();
         if (otp.getOtp().getSecondsLeft() < 5) {
@@ -104,11 +113,11 @@ class OTPGlance extends WatchUi.GlanceView {
         } else {
             dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
         }
-        dc.setPenWidth(7);
-        dc.drawLine(5, h-5, x, h-5);
-        dc.setPenWidth(7);
+        dc.setPenWidth(LINE_HEIGHT);
+        dc.drawLine(5, lineY, x, lineY);
+        dc.setPenWidth(LINE_HEIGHT);
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawLine(x, h-5, w-5, h-5);
+        dc.drawLine(x, lineY, w-5, lineY);
     }
 
     // onUpdate() is called periodically to update the View

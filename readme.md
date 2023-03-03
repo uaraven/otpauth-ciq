@@ -51,20 +51,25 @@ Devices listed in the table below were tested at least with the simulator. Bear 
 | Fenix Chronos                     | No        |
 | Fenix 6                           | Yes       |
 | Fenix 6pro                        | Yes, Live |
-| Enduro                            | Yes, Live |
+| Enduro                            | Yes       |
 | Venu                              | No        | 
 | Venu Mercedes-Benz                | No        | 
 | Venu Sq/Sq Music                  | No        |
-| Venu 2/2s/2plus                   | Yes, Live | 
+| Venu 2/2s/2plus                   | Yes, Live |
+| Venu Sq 2|Sq 2 Music              | Yes, Live |   
 | Fenix 7/7s/7x                     | Yes, Live |
 | Epix 2                            | Yes, Live |
 | Forerunner 55                     | Yes       |
 | Forerunner 245                    | Yes       |
 | Forerunner 245 Music              | Yes, Live |
+| Forerunner 255/255 Music/255s/255s Music | Yes, Live |
+| Forerunner 265/265s               | Yes, Live |
 | Forerunner 645/645 Music          | No        |
 | Forerunner 745                    | Yes, Live |
 | Forerunner 935                    | Yes       |
 | Forerunner 945/945LTE             | Yes, Live |
+| Forerunner 955                    | Yes, Live |
+| Forerunner 965                    | Yes, Live | 
 | Vivoactive 3/3 Music /3 Music LTE | No        |
 | Vivoactive 4/4s                   | No        |
 | Instinct 2/2s                     | Yes       |
@@ -73,6 +78,7 @@ Devices listed in the table below were tested at least with the simulator. Bear 
 | Descent Mk2/Mk2i/Mk2 S            | Yes, Live |
 | Rey, Darth Vader, Captain Marvel, First Avenger       | No        |
 | MARQ (Various)                    | Yes       |
+| MARQ 2                            | Yes, Live |
 
 
 # License
