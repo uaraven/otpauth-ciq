@@ -16,6 +16,7 @@ class OTPGlance extends WatchUi.GlanceView {
     var otp;
     var timer;
     var firstRun as Boolean;
+    var suppressLiveUpdates as Boolean = false;
     var liveGlances as Boolean;
     var liveGlancesStored = false;
     var title as String or Null;
@@ -29,11 +30,16 @@ class OTPGlance extends WatchUi.GlanceView {
         self.refreshCount = 0;
 
         var lv = Application.Storage.getValue(LIVE_UPDATE);
+        liveGlancesStored = lv != null;
         if (lv != null && lv == true) {
             self.liveGlances = true;
             self.firstRun = false;
-            self.liveGlancesStored = true;
             System.println("Enabling live updates");
+        }
+        var supportsLiveGlances = WatchUi.loadResource(Rez.JsonData.LiveGlances) as String;
+        if (supportsLiveGlances.equals("false")) {
+                System.println("Force disable live glances");
+                self.suppressLiveUpdates = true;
         }
     }
 
@@ -122,7 +128,7 @@ class OTPGlance extends WatchUi.GlanceView {
 
     // onUpdate() is called periodically to update the View
     function onUpdate(dc) {
-        if (firstRun || self.otp == null && !liveGlances) {
+        if (firstRun || suppressLiveUpdates || self.otp == null && !liveGlances) {
             drawSimpleGlance(dc);
             firstRun = false;
         } else {
