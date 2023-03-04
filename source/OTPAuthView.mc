@@ -11,6 +11,8 @@ class OTPAuthView extends WatchUi.View {
 
     const indicatorAngle = 7.5;
     const ANIM_TIME = 0.20;
+    const INSTINCT_INDICATOR_LINE_WIDTH = 6;
+    const INDICATOR_LINE_WIDTH = 8;
 
     var codeStore;
 
@@ -21,7 +23,8 @@ class OTPAuthView extends WatchUi.View {
     var indicatorRadius;
     var isInstinct as Boolean;
 
-    var instinctOffset = 0; // second screen offset from top right corner
+    var instinctOffsetY = 0; // second screen offset from top right corner
+    var instinctOffsetX = 0;
     var instinctR = 0;
 
     var screenShape;
@@ -72,18 +75,30 @@ class OTPAuthView extends WatchUi.View {
         }
         indicatorRadius = r/2 - indicatorSize - 20;
         if (isInstinct) {
-            if (dc.getWidth() == 176) { //instinct 2 
-                instinctOffset = 31;
-                instinctR = 28;
-            } else { // instinct 2s
-                instinctOffset = 25;
-                instinctR = 20;
+            if (WatchUi has :getSubscreen) {
+                var w = dc.getWidth();
+                var secondary = WatchUi.getSubscreen();
+                if (secondary != null) {
+                    instinctR = min(secondary.width / 2 , secondary.height / 2) - INSTINCT_INDICATOR_LINE_WIDTH;
+                    instinctOffsetX = w - (secondary.x + secondary.width / 2);
+                    instinctOffsetY = secondary.y + secondary.height / 2 - 1;
+                }
+            } else {
+                if (dc.getWidth() == 176) { //instinct 2 
+                    instinctOffsetX = 31;
+                    instinctOffsetY = 31;
+                    instinctR = 28;
+                } else { // instinct 2s
+                    instinctOffsetX = 25;
+                    instinctOffsetY = 25;
+                    instinctR = 20;
+                }
             }
         }
     }
 
     function nextCode() {
-        if (codeStore.size() == 1) {
+        if (codeStore.size() <= 1) {
             return;
         }
         scrolling = true; // disable showing new code until we scrolled the old one out of view
@@ -96,7 +111,7 @@ class OTPAuthView extends WatchUi.View {
     }
 
     function prevCode() {
-        if (codeStore.size() == 1) {
+        if (codeStore.size() <= 1) {
             return;
         }
         scrolling = true; // disable showing new code until we scrolled the old one out of view
@@ -174,7 +189,7 @@ class OTPAuthView extends WatchUi.View {
     function drawTimeStepRound(dc as Dc) as Void {
         var percentTimeLeft = codeStore.getOtpCode().getOtp().getPercentTimeLeft();
     
-        dc.setPenWidth(8);
+        dc.setPenWidth(INDICATOR_LINE_WIDTH);
         var start = 90;
         var end = (360*percentTimeLeft + 90).toNumber();
         var w = dc.getWidth();
@@ -189,7 +204,7 @@ class OTPAuthView extends WatchUi.View {
     function drawTimeStepSquare(dc as Dc) as Void {
         var percentTimeLeft = codeStore.getOtpCode().getOtp().getPercentTimeLeft();
     
-        dc.setPenWidth(8);
+        dc.setPenWidth(INDICATOR_LINE_WIDTH);
         var w = dc.getWidth();
         var h = dc.getHeight();
         var end = ((w-10)*percentTimeLeft).toNumber();
@@ -203,13 +218,12 @@ class OTPAuthView extends WatchUi.View {
     function drawTimeStepInstinct(dc as Dc) as Void {
         var percentTimeLeft = codeStore.getOtpCode().getOtp().getPercentTimeLeft();
     
-        dc.setPenWidth(6);
+        dc.setPenWidth(INSTINCT_INDICATOR_LINE_WIDTH);
         var start = 90;
         var end = (360*percentTimeLeft + 90).toNumber();
         var w = dc.getWidth();
-        var h = dc.getHeight();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawArc(w-instinctOffset, instinctOffset, instinctR, Graphics.ARC_COUNTER_CLOCKWISE, start, end);
+        dc.drawArc(w-instinctOffsetX, instinctOffsetY, instinctR, Graphics.ARC_COUNTER_CLOCKWISE, start, end);
     }
 
     function drawIndicator(dc as Dc) as Void {
