@@ -215,6 +215,11 @@ class OTPAuthView extends WatchUi.View {
         dc.drawLine(5, h-10, end, h-10);
     }
 
+    (:allDevices)
+    function drawTimeStepInstinct(dc as Dc) as Void {
+    }
+
+    (:instinct)
     function drawTimeStepInstinct(dc as Dc) as Void {
         var percentTimeLeft = codeStore.getOtpCode().getOtp().getPercentTimeLeft();
     

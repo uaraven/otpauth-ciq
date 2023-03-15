@@ -92,7 +92,11 @@ class OTPGlance extends WatchUi.GlanceView {
     }
 
     function drawLiveGlance(dc) {
-         View.onUpdate(dc);
+        if (otp == null) {
+            drawSimpleGlance(dc);
+            return;
+        }
+        View.onUpdate(dc);
         
         var w = dc.getWidth();
         var h = dc.getHeight();

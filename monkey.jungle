@@ -1,1 +1,6 @@
 project.manifest = manifest.xml
+
+base.excludeAnnotations = instinct
+
+instinct2.excludeAnnotations = allDevices
+instinct2s.excludeAnnotations = allDevices

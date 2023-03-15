@@ -1,3 +1,3 @@
 <resources>
-    <jsonData id="LiveGlances" scope="glance">"false"</jsonData>
+    <jsonData id="LiveGlances" scope="glance">"auto"</jsonData>
 </resources>
