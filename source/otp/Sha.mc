@@ -13,12 +13,6 @@ module Sha {
         return toArray(hash.digest());
     }
 
-    function encodeSha1(message as Array<Number>) as Array<Number> {
-        var sha = new Hash({:algorithm => Cryptography.HASH_SHA1});
-        sha.update(toByteArray(message));
-        return toArray(sha.digest());
-    }
-
     function toArray(ba as ByteArray) as Array<Number> {
         var res = new [ba.size()];
         for (var i=0; i < res.size(); i++) {

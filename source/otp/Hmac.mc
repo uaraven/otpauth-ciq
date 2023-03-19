@@ -25,10 +25,6 @@ module Hmac {
         return Sha.encodeHash(opad.addAll(v1), algorithm);
     }
 
-    function hmacSha1(key as Array<Number>, text) as Array<Number> {
-       return hmacSha(key, 0, text);
-    }
-
     (:test)
     function TestHmacSha1(logger as Test.Logger) {
         var key = "secret key".toUtf8Array();
