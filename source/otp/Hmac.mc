@@ -51,4 +51,3 @@ module Hmac {
         return expected.equals(hmacStr);
     }
 }
-    
