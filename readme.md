@@ -2,6 +2,8 @@
 
 2FA codes is a Connect IQ widget that generates Time-based one-time passwords used for 2-factor authentication. It is compatible with Google Authenticator and other similar systems.
 
+It supports SHA-1 and SHA-256 based codes.
+
 ## Usage
 
 
