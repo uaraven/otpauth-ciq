@@ -13,10 +13,12 @@ module Otp {
     class BaseOtp {
         private var digits;
         private var secret;
+        private var algo as Number;
 
-        function initialize(secretKey, digitCount) {
+        function initialize(secretKey, digitCount, algorithm) {
             digits = digitCount;
             secret = secretKey;
+            algo = algorithm;
         }
 
         function getSecret() {
@@ -31,6 +33,10 @@ module Otp {
             return digits;
         }
 
+        function getAlgorithm() {
+            return algo;
+        }
+
         function code() {
             return "";
         }
@@ -41,9 +47,10 @@ module Otp {
         private var counter;
 
         // secretKey - secret value encoded with Base32
+        // algorithm - 0 = SHA-1, 1 = SHA-256
         // digitCount - number of digits in the OTP code
-        function initialize(secretKey, digitCount) {
-            BaseOtp.initialize(secretKey, digitCount);
+        function initialize(secretKey, algorithm, digitCount) {
+            BaseOtp.initialize(secretKey, digitCount, algorithm);
             counter = 0;
         }
 
@@ -60,7 +67,7 @@ module Otp {
         protected function generate() as String {
             var text = intToBytes(counter);
             counter += 1;
-            var hash = Hmac.hmacSha1(getSecret(), text) as Array<Number>;
+            var hash = Hmac.hmacSha(getSecret(), getAlgorithm(), text) as Array<Number>;
             var offset = (hash[hash.size()-1] & 0x0F).toNumber();
             var binary = ((hash[offset] & 0x7f) << 24) |
                          ((hash[offset+1] & 0xff) << 16) |
@@ -92,10 +99,11 @@ module Otp {
         private var cachedTime as Long;
 
         // secretKey - secret value encoded with Base32
+        // algorithm - 0 = SHA-1, 1 = SHA-256
         // digitCount - number of digits in the OTP code
         // timeStep - time window for a TOTP code
-        function initialize(secretKey, digitCount, timeStep) {
-            Hotp.initialize(secretKey, digitCount);
+        function initialize(secretKey, algorithm, digitCount, timeStep) {
+            Hotp.initialize(secretKey, algorithm, digitCount);
             self.timeStep = timeStep;
             self.cachedCode = null;
             self.cachedTime = 0 as Long;
@@ -133,26 +141,32 @@ module Otp {
 
     function TotpFromBase32(key as String) as Totp {
         var secret = Base32.base32decode(key);
-        var totp = new Totp(secret, 6, 30);
+        var totp = new Totp(secret, 0, 6, 30);
         return totp;
     }
 
     function TotpFromBase32Digits(key as String, digits as Numeric) as Totp {
         var secret = Base32.base32decode(key);
-        var totp = new Totp(secret, digits, 30);
+        var totp = new Totp(secret, 0, digits, 30);
         return totp;
     }
 
     function TotpFromBase32DigitsTimeStep(key as String, digits as Numeric, timeStep as Numeric) as Totp {
         var secret = Base32.base32decode(key);
-        var totp = new Totp(secret, digits, timeStep);
+        var totp = new Totp(secret, 0, digits, timeStep);
+        return totp;
+    }
+
+    function TotpFromBase32AlgoDigitsTimeStep(key as String, algo as Numeric, digits as Numeric, timeStep as Numeric) as Totp {
+        var secret = Base32.base32decode(key);
+        var totp = new Totp(secret, algo, digits, timeStep);
         return totp;
     }
     
     (:test)
     function TestOtp(logger as Test.Logger) {
         var key = "12345678901234567890";
-	    var otp = new Totp(key.toUtf8Array(), 8, 30);
+	    var otp = new Totp(key.toUtf8Array(), 0, 8, 30);
 
         var expected = "94287082";
 	    var actual = otp.codeForEpoch(59);
@@ -163,6 +177,41 @@ module Otp {
 
         expected = "07081804";
         actual = otp.codeForEpoch(1111111109);
+	    if (!expected.equals(actual)) {
+            logger.debug(Lang.format("Expected: '$1$', actual: '$2$'", [expected, actual]));
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    (:test)
+    function TestOtpSha256(logger as Test.Logger) {
+        var key = "12345678901234567890";
+	    var otp = new Totp(key.toUtf8Array(), 1, 8, 30);
+
+        var expected = "32247374";
+	    var actual = otp.codeForEpoch(59);
+        if (!expected.equals(actual)) {
+            logger.debug(Lang.format("Expected: '$1$', actual: '$2$'", [expected, actual]));
+        } 
+
+        expected = "67496144";
+        actual = otp.codeForEpoch(100);
+	    if (!expected.equals(actual)) {
+            logger.debug(Lang.format("Expected: '$1$', actual: '$2$'", [expected, actual]));
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+     (:test)
+    function TestOtpSha256_6digits(logger as Test.Logger) {
+        var key = "12345678901234567890";
+	    var otp = new Totp(key.toUtf8Array(), 1, 6, 30);
+        var expected = "190188";
+        var actual = otp.codeForEpoch(0x0000000003561b69*30);
 	    if (!expected.equals(actual)) {
             logger.debug(Lang.format("Expected: '$1$', actual: '$2$'", [expected, actual]));
             return false;

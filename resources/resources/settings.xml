@@ -1,75 +1,91 @@
 <resources>
     <properties>
-        <property id="enabled1" type="boolean"/>
-        <property id="name1" type="string"/>
-        <property id="code1" type="string"/>
+        <property id="enabled1" type="boolean" />
+        <property id="name1" type="string" />
+        <property id="code1" type="string" />
+        <property id="algo1" type="number">0</property>
         <property id="digits1" type="number">6</property>
         <property id="timeStep2" type="number">30</property>
 
-        <property id="enabled2" type="boolean"/>
-        <property id="name2" type="string"/>
-        <property id="code2" type="string"/>
+        <property id="enabled2" type="boolean" />
+        <property id="name2" type="string" />
+        <property id="code2" type="string" />
+        <property id="algo2" type="number">0</property>
         <property id="digits2" type="number">6</property>
         <property id="timeStep1" type="number">30</property>
 
-        <property id="enabled3" type="boolean"/>
-        <property id="name3" type="string"/>
-        <property id="code3" type="string"/>
+        <property id="enabled3" type="boolean" />
+        <property id="name3" type="string" />
+        <property id="code3" type="string" />
+        <property id="algo3" type="number">0</property>
         <property id="digits3" type="number">6</property>
         <property id="timeStep3" type="number">30</property>
 
-        <property id="enabled4" type="boolean"/>
-        <property id="name4" type="string"/>
-        <property id="code4" type="string"/>
+        <property id="enabled4" type="boolean" />
+        <property id="name4" type="string" />
+        <property id="code4" type="string" />
+        <property id="algo4" type="number">0</property>
         <property id="digits4" type="number">6</property>
         <property id="timeStep4" type="number">30</property>
 
-        <property id="enabled5" type="boolean"/>
-        <property id="name5" type="string"/>
-        <property id="code5" type="string"/>
+        <property id="enabled5" type="boolean" />
+        <property id="name5" type="string" />
+        <property id="code5" type="string" />
+        <property id="algo5" type="number">0</property>
         <property id="digits5" type="number">6</property>
         <property id="timeStep5" type="number">30</property>
 
-        <property id="enabled6" type="boolean"/>
-        <property id="name6" type="string"/>
-        <property id="code6" type="string"/>
+        <property id="enabled6" type="boolean" />
+        <property id="name6" type="string" />
+        <property id="code6" type="string" />
+        <property id="algo6" type="number">0</property>
         <property id="digits6" type="number">6</property>
         <property id="timeStep6" type="number">30</property>
 
-        <property id="enabled7" type="boolean"/>
-        <property id="name7" type="string"/>
-        <property id="code7" type="string"/>
+        <property id="enabled7" type="boolean" />
+        <property id="name7" type="string" />
+        <property id="code7" type="string" />
+        <property id="algo7" type="number">0</property>
         <property id="digits7" type="number">6</property>
         <property id="timeStep7" type="number">30</property>
 
-        <property id="enabled8" type="boolean"/>
-        <property id="name8" type="string"/>
-        <property id="code8" type="string"/>
+        <property id="enabled8" type="boolean" />
+        <property id="name8" type="string" />
+        <property id="code8" type="string" />
+        <property id="algo8" type="number">0</property>
         <property id="digits8" type="number">6</property>
         <property id="timeStep8" type="number">30</property>
 
-        <property id="enabled9" type="boolean"/>
-        <property id="name9" type="string"/>
-        <property id="code9" type="string"/>
+        <property id="enabled9" type="boolean" />
+        <property id="name9" type="string" />
+        <property id="code9" type="string" />
+        <property id="algo9" type="number">0</property>
         <property id="digits9" type="number">6</property>
         <property id="timeStep9" type="number">30</property>
 
-        <property id="enabled10" type="boolean"/>
-        <property id="name10" type="string"/>
-        <property id="code10" type="string"/>
+        <property id="enabled10" type="boolean" />
+        <property id="name10" type="string" />
+        <property id="code10" type="string" />
+        <property id="algo10" type="number">0</property>
         <property id="digits10" type="number">6</property>
         <property id="timeStep10" type="number">30</property>
     </properties>
 
     <settings>
         <setting propertyKey="@Properties.enabled1" title="@Strings.enabled1">
-            <settingConfig type="boolean"/>
+            <settingConfig type="boolean" />
         </setting>
         <setting propertyKey="@Properties.name1" title="@Strings.name1">
             <settingConfig type="alphaNumeric" maxLength="15"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code1" title="@Strings.code1">
             <settingConfig type="alphaNumeric"></settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.algo1" title="@Strings.algo">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.sha1</listEntry>
+                <listEntry value="1">@Strings.sha256</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits1" title="@Strings.digits">
             <settingConfig type="list">
@@ -85,13 +101,19 @@
         </setting>
         <!-- Next entry -->
         <setting propertyKey="@Properties.enabled2" title="@Strings.enabled2">
-            <settingConfig type="boolean"/>
+            <settingConfig type="boolean" />
         </setting>
         <setting propertyKey="@Properties.name2" title="@Strings.name2">
             <settingConfig type="alphaNumeric" maxLength="15"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code2" title="@Strings.code2">
-            <settingConfig type="alphaNumeric"/>
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.algo2" title="@Strings.algo">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.sha1</listEntry>
+                <listEntry value="1">@Strings.sha256</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits2" title="@Strings.digits">
             <settingConfig type="list">
@@ -107,13 +129,19 @@
         </setting>
         <!-- Next entry -->
         <setting propertyKey="@Properties.enabled3" title="@Strings.enabled3">
-            <settingConfig type="boolean"/>
+            <settingConfig type="boolean" />
         </setting>
         <setting propertyKey="@Properties.name3" title="@Strings.name3">
             <settingConfig type="alphaNumeric" maxLength="15"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code3" title="@Strings.code3">
-            <settingConfig type="alphaNumeric"/>
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.algo3" title="@Strings.algo">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.sha1</listEntry>
+                <listEntry value="1">@Strings.sha256</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits3" title="@Strings.digits">
             <settingConfig type="list">
@@ -129,13 +157,19 @@
         </setting>
         <!-- Next entry -->
         <setting propertyKey="@Properties.enabled4" title="@Strings.enabled4">
-            <settingConfig type="boolean"/>
+            <settingConfig type="boolean" />
         </setting>
         <setting propertyKey="@Properties.name4" title="@Strings.name4">
             <settingConfig type="alphaNumeric" maxLength="15"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code4" title="@Strings.code4">
-            <settingConfig type="alphaNumeric"/>
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.algo4" title="@Strings.algo">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.sha1</listEntry>
+                <listEntry value="1">@Strings.sha256</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits4" title="@Strings.digits">
             <settingConfig type="list">
@@ -151,13 +185,19 @@
         </setting>
         <!-- Next entry -->
         <setting propertyKey="@Properties.enabled5" title="@Strings.enabled5">
-            <settingConfig type="boolean"/>
+            <settingConfig type="boolean" />
         </setting>
         <setting propertyKey="@Properties.name5" title="@Strings.name5">
             <settingConfig type="alphaNumeric" maxLength="15"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code5" title="@Strings.code5">
-            <settingConfig type="alphaNumeric"/>
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.algo5" title="@Strings.algo">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.sha1</listEntry>
+                <listEntry value="1">@Strings.sha256</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits5" title="@Strings.digits">
             <settingConfig type="list">
@@ -173,13 +213,19 @@
         </setting>
         <!-- Next entry -->
         <setting propertyKey="@Properties.enabled6" title="@Strings.enabled6">
-            <settingConfig type="boolean"/>
+            <settingConfig type="boolean" />
         </setting>
         <setting propertyKey="@Properties.name6" title="@Strings.name6">
             <settingConfig type="alphaNumeric" maxLength="15"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code6" title="@Strings.code6">
-            <settingConfig type="alphaNumeric"/>
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.algo6" title="@Strings.algo">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.sha1</listEntry>
+                <listEntry value="1">@Strings.sha256</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits6" title="@Strings.digits">
             <settingConfig type="list">
@@ -195,13 +241,19 @@
         </setting>
         <!-- Next entry -->
         <setting propertyKey="@Properties.enabled7" title="@Strings.enabled7">
-            <settingConfig type="boolean"/>
+            <settingConfig type="boolean" />
         </setting>
         <setting propertyKey="@Properties.name7" title="@Strings.name7">
             <settingConfig type="alphaNumeric" maxLength="15"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code7" title="@Strings.code7">
-            <settingConfig type="alphaNumeric"/>
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.algo7" title="@Strings.algo">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.sha1</listEntry>
+                <listEntry value="1">@Strings.sha256</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits7" title="@Strings.digits">
             <settingConfig type="list">
@@ -217,13 +269,19 @@
         </setting>
         <!-- Next entry -->
         <setting propertyKey="@Properties.enabled8" title="@Strings.enabled8">
-            <settingConfig type="boolean"/>
+            <settingConfig type="boolean" />
         </setting>
         <setting propertyKey="@Properties.name8" title="@Strings.name8">
             <settingConfig type="alphaNumeric" maxLength="15"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code8" title="@Strings.code8">
-            <settingConfig type="alphaNumeric"/>
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.algo8" title="@Strings.algo">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.sha1</listEntry>
+                <listEntry value="1">@Strings.sha256</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits8" title="@Strings.digits">
             <settingConfig type="list">
@@ -239,13 +297,19 @@
         </setting>
         <!-- Next entry -->
         <setting propertyKey="@Properties.enabled9" title="@Strings.enabled9">
-            <settingConfig type="boolean"/>
+            <settingConfig type="boolean" />
         </setting>
         <setting propertyKey="@Properties.name9" title="@Strings.name9">
             <settingConfig type="alphaNumeric" maxLength="15"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code9" title="@Strings.code6">
-            <settingConfig type="alphaNumeric"/>
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.algo9" title="@Strings.algo">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.sha1</listEntry>
+                <listEntry value="1">@Strings.sha256</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits9" title="@Strings.digits">
             <settingConfig type="list">
@@ -261,13 +325,19 @@
         </setting>
         <!-- Next entry -->
         <setting propertyKey="@Properties.enabled10" title="@Strings.enabled10">
-            <settingConfig type="boolean"/>
+            <settingConfig type="boolean" />
         </setting>
         <setting propertyKey="@Properties.name10" title="@Strings.name10">
             <settingConfig type="alphaNumeric" maxLength="15"></settingConfig>
         </setting>
         <setting propertyKey="@Properties.code10" title="@Strings.code10">
-            <settingConfig type="alphaNumeric"/>
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.algo10" title="@Strings.algo">
+            <settingConfig type="list">
+                <listEntry value="0">@Strings.sha1</listEntry>
+                <listEntry value="1">@Strings.sha256</listEntry>
+            </settingConfig>
         </setting>
         <setting propertyKey="@Properties.digits10" title="@Strings.digits">
             <settingConfig type="list">

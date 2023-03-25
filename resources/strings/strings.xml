@@ -13,6 +13,9 @@
     <string id="digits9">9</string>
     <string id="digits10">10</string>
 
+    <string id="sha1">SHA-1</string>
+    <string id="sha256">SHA-256</string>
+
     <string id="enabled1">Account #1 enabled</string>
     <string id="name1">Account #1</string>
     <string id="code1">Secret code #1</string>
@@ -54,5 +57,6 @@
     <string id="code10">Secret code #10</string>
 
     <string id="digits">Number of digits</string>
-    <string id="timeStep">Code changed interval, seconds</string>
+    <string id="timeStep">Code change interval, seconds</string>
+    <string id="algo">Algorithm</string>
 </strings>

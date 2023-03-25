@@ -50,12 +50,13 @@ class CodeStore {
         var enabled = Application.Properties.getValue("enabled" + index);
         var name = Application.Properties.getValue("name" + index);
         var secret = Application.Properties.getValue("code" + index);
+        var algo = Application.Properties.getValue("algo" + index);
         var digits = Application.Properties.getValue("digits" + index);
         var timeStep = Application.Properties.getValue("timeStep" + index);
         if (!enabled || "".equals(secret)) {
             return null;
         }
-        var otp = Otp.TotpFromBase32DigitsTimeStep(secret, digits, timeStep);
+        var otp = Otp.TotpFromBase32AlgoDigitsTimeStep(secret, algo, digits, timeStep);
         return new OtpCode(otp, name);
     }
 

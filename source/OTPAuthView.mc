@@ -278,4 +278,3 @@ class OTPAuthView extends WatchUi.View {
         WatchUi.animate(object, :locY, WatchUi.ANIM_TYPE_EASE_IN, ystart, yend, ANIM_TIME, callback);
     }
 }
-
