@@ -1,0 +1,5 @@
+<layout id="MainLayout">
+    <label id="no_codes" text="@Strings.NoCodes" x="center" y="60%" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER"/>
+    <label id="code" x="center" y="55%" justification="Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER" font="Graphics.FONT_NUMBER_MEDIUM" color="Graphics.COLOR_WHITE"/>
+    <label id="name" x="center" y="75%" justification="Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER" font="Graphics.FONT_SMALL" color="Graphics.COLOR_LT_GRAY"/>
+</layout>

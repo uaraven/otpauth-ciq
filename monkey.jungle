@@ -4,3 +4,4 @@ base.excludeAnnotations = instinct
 
 instinct2.excludeAnnotations = allDevices
 instinct2s.excludeAnnotations = allDevices
+instinct2x.excludeAnnotations = allDevices
