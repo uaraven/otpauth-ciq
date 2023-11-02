@@ -128,7 +128,7 @@ class OTPGlance extends WatchUi.GlanceView {
 
     dc.drawText(
       5,
-      5,
+      0,
       Graphics.FONT_GLANCE_NUMBER,
       otp.getOtp().code(),
       Graphics.TEXT_JUSTIFY_LEFT
