@@ -1,5 +1,7 @@
 <resources>
     <properties>
+        <property id="show_glance" type="boolean">true</property>
+
         <property id="enabled1" type="boolean" />
         <property id="name1" type="string" />
         <property id="code1" type="string" />
@@ -72,6 +74,10 @@
     </properties>
 
     <settings>
+        <setting propertyKey="@Properties.show_glance" title="@Strings.show_glance">
+            <settingConfig type="boolean" />
+        </setting>
+
         <setting propertyKey="@Properties.enabled1" title="@Strings.enabled1">
             <settingConfig type="boolean" />
         </setting>

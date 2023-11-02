@@ -16,6 +16,8 @@
     <string id="sha1">SHA-1</string>
     <string id="sha256">SHA-256</string>
 
+    <string id="show_glance">Show code in glance view</string>
+
     <string id="enabled1">Account #1 enabled</string>
     <string id="name1">Account #1</string>
     <string id="code1">Secret code #1</string>
