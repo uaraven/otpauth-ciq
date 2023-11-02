@@ -113,9 +113,6 @@ class OTPGlance extends WatchUi.GlanceView {
     var w = dc.getWidth() + topOffset;
     var h = dc.getHeight() - bottomOffset;
 
-    dc.setColor(Graphics.COLOR_DK_RED, Graphics.COLOR_RED);
-    dc.fillRectangle(0, 0, w, h);
-
     var codeHeight =
       dc.getFontHeight(Graphics.FONT_GLANCE_NUMBER) -
       dc.getFontDescent(Graphics.FONT_GLANCE_NUMBER);
