@@ -1,0 +1,4 @@
+<resources>
+    <jsonData id="GlanceTopOffset" scope="glance">0</jsonData>
+    <jsonData id="GlanceBottomOffset" scope="glance">-23</jsonData>
+</resources>
