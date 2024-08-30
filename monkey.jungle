@@ -2,6 +2,7 @@ project.manifest = manifest.xml
 
 base.excludeAnnotations = instinct;crossover
 
+descentg1.excludeAnnotations = allDevices;crossover
 instinct2.excludeAnnotations = allDevices;crossover
 instinct2s.excludeAnnotations = allDevices;crossover
 instinct2x.excludeAnnotations = allDevices;crossover
