@@ -49,7 +49,7 @@ class OTPGlance extends WatchUi.GlanceView {
       WatchUi.loadResource(Rez.JsonData.LiveGlances) as String;
     var showLiveGlance =
       Application.Properties.getValue("show_glance") as Boolean;
-    if (supportsLiveGlances.equals("false") || !showLiveGlance) {
+    if (supportsLiveGlances.equals("FALSE") || !showLiveGlance) {
       System.println("Force disable live glances");
       self.suppressLiveUpdates = true;
     }
@@ -116,11 +116,14 @@ class OTPGlance extends WatchUi.GlanceView {
       drawSimpleGlance(dc);
       return;
     }
-    // View.onUpdate(dc);
 
     var w = dc.getWidth();
     var h = dc.getHeight();
     var y = topOffset;
+
+    // next two lines are used for debugging glance rendering
+    // dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_DK_GRAY);
+    // dc.fillRectangle(0, 0, w, h);
 
     var codeHeight =
       dc.getFontHeight(Graphics.FONT_GLANCE_NUMBER) -

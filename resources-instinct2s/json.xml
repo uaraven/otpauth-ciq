@@ -1,3 +1,4 @@
 <resources>
     <jsonData id="Instinct">true</jsonData>
+    <jsonData id="LiveGlances" scope="glance">"FALSE"</jsonData>
 </resources>
