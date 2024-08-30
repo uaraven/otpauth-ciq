@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
+
 # 2FA Codes
 
 2FA codes is a Connect IQ widget that generates Time-based one-time passwords used for 2-factor authentication. It is compatible with Google Authenticator and other similar systems.
@@ -43,6 +45,9 @@ See examples in the [wiki](https://github.com/uaraven/otpauth-ciq/wiki)
 If the "Glances" column contains word "Live" then live updates for glances are supported for the device.
 
 Devices listed in the table below were tested at least with the simulator. Bear in mind that Garmin simulator is not 100% accurate and therefore there might be various problems with some devices that were not detected. [Open an issue](<(https://github.com/uaraven/otpauth-ciq/issues)>) and describe the problem to get it fixed.
+
+Almost all newer (2020 and later) devices support Live glances, so if you cannot find your device in the table below, it most likely
+means that it is new enough.
 
 | Device                                          |  Glances  |
 | :---------------------------------------------- | :-------: |
