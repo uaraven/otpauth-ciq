@@ -21,6 +21,7 @@ class OTPAuthView extends WatchUi.View {
   var startingAngle;
   var indicatorRadius;
   var isInstinct as Boolean;
+  var isCrossover as Boolean;
 
   var instinctOffsetY = 0; // second screen offset from top right corner
   var instinctOffsetX = 0;
@@ -46,6 +47,8 @@ class OTPAuthView extends WatchUi.View {
     isInstinct = WatchUi.loadResource(Rez.JsonData.Instinct) as Boolean;
     var settings = System.getDeviceSettings();
     screenShape = settings.screenShape;
+
+    isCrossover = WatchUi.View has :setClockHandPosition;
   }
 
   function min(a, b) {
@@ -173,7 +176,9 @@ class OTPAuthView extends WatchUi.View {
     }
     View.onUpdate(dc);
     if (!codeStore.isEmpty()) {
-      if (isInstinct) {
+      if (isCrossover) {
+        drawTimestepCrossover();
+      } else if (isInstinct) {
         drawTimeStepInstinct(dc);
       } else {
         if (screenShape == System.SCREEN_SHAPE_ROUND) {
@@ -224,7 +229,27 @@ class OTPAuthView extends WatchUi.View {
     dc.drawLine(5, h - 10, end, h - 10);
   }
 
+  (:crossover)
+  function drawTimestepCrossover() as Void {
+    var percentTimeLeft = codeStore.getOtpCode().getOtp().getPercentTimeLeft();
+
+    var angle = 180 * percentTimeLeft - 90;
+
+    setClockHandPosition({
+      :clockState => ANALOG_CLOCK_STATE_HOLDING,
+      :hour => -90,
+      :minute => angle,
+    });
+  }
+
   (:allDevices)
+  function drawTimestepCrossover() as Void {}
+  (:instinct)
+  function drawTimestepCrossover() as Void {}
+
+  (:allDevices)
+  function drawTimeStepInstinct(dc as Dc) as Void {}
+  (:crossover)
   function drawTimeStepInstinct(dc as Dc) as Void {}
 
   (:instinct)
@@ -282,6 +307,11 @@ class OTPAuthView extends WatchUi.View {
   // memory.
   function onHide() as Void {
     updateTimer.stop();
+    if (isCrossover) {
+      setClockHandPosition({
+        :clockState => ANALOG_CLOCK_STATE_SYSTEM_TIME,
+      });
+    }
     System.println("Stopping widget");
   }
 

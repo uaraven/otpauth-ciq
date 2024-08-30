@@ -1,7 +1,9 @@
 project.manifest = manifest.xml
 
-base.excludeAnnotations = instinct
+base.excludeAnnotations = instinct;crossover
 
-instinct2.excludeAnnotations = allDevices
-instinct2s.excludeAnnotations = allDevices
-instinct2x.excludeAnnotations = allDevices
+instinct2.excludeAnnotations = allDevices;crossover
+instinct2s.excludeAnnotations = allDevices;crossover
+instinct2x.excludeAnnotations = allDevices;crossover
+
+instinctcrossover.excludeAnnotations = allDevices;instinct

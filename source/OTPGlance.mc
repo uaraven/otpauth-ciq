@@ -49,7 +49,7 @@ class OTPGlance extends WatchUi.GlanceView {
       WatchUi.loadResource(Rez.JsonData.LiveGlances) as String;
     var showLiveGlance =
       Application.Properties.getValue("show_glance") as Boolean;
-    if (supportsLiveGlances.equals("false") || !showLiveGlance) {
+    if (supportsLiveGlances.equals("FALSE") || !showLiveGlance) {
       System.println("Force disable live glances");
       self.suppressLiveUpdates = true;
     }
