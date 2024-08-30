@@ -116,11 +116,14 @@ class OTPGlance extends WatchUi.GlanceView {
       drawSimpleGlance(dc);
       return;
     }
-    // View.onUpdate(dc);
 
     var w = dc.getWidth();
     var h = dc.getHeight();
     var y = topOffset;
+
+    // next two lines are used for debugging glance rendering
+    // dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_DK_GRAY);
+    // dc.fillRectangle(0, 0, w, h);
 
     var codeHeight =
       dc.getFontHeight(Graphics.FONT_GLANCE_NUMBER) -
