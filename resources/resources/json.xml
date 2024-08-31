@@ -1,5 +1,6 @@
 <resources>
     <jsonData id="Instinct">false</jsonData>
+    <jsonData id="DrawSelectHint">false</jsonData>
     <jsonData id="LiveGlances" scope="glance">"auto"</jsonData>
     <jsonData id="GlanceTopOffset" scope="glance">0</jsonData>
     <jsonData id="GlanceBottomOffset" scope="glance">0</jsonData>

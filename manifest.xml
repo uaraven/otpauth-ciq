@@ -18,8 +18,12 @@
             <iq:product id="approachs7047mm"/>
             <iq:product id="d2air"/>
             <iq:product id="d2airx10"/>
+            <iq:product id="d2delta"/>
+            <iq:product id="d2deltapx"/>
+            <iq:product id="d2deltas"/>
             <iq:product id="d2mach1"/>
             <iq:product id="descentg1"/>
+            <iq:product id="descentmk2"/>
             <iq:product id="descentmk2s"/>
             <iq:product id="descentmk343mm"/>
             <iq:product id="descentmk351mm"/>
@@ -102,6 +106,7 @@
             <iq:product id="venusq2"/>
             <iq:product id="venusq2m"/>
             <iq:product id="venusqm"/>
+            <iq:product id="vivoactive3"/>
             <iq:product id="vivoactive3m"/>
             <iq:product id="vivoactive3mlte"/>
             <iq:product id="vivoactive4"/>

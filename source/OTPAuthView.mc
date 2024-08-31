@@ -40,6 +40,8 @@ class OTPAuthView extends WatchUi.View {
 
   var scrolling as Boolean = false;
 
+  var enableDrawSelectHint as Boolean = false;
+
   function initialize() {
     View.initialize();
     codeStore = new CodeStore();
@@ -47,6 +49,10 @@ class OTPAuthView extends WatchUi.View {
     isInstinct = WatchUi.loadResource(Rez.JsonData.Instinct) as Boolean;
     var settings = System.getDeviceSettings();
     screenShape = settings.screenShape;
+
+    // device switches screens with select button
+    enableDrawSelectHint =
+      WatchUi.loadResource(Rez.JsonData.DrawSelectHint) as Boolean;
 
     isCrossover = WatchUi.View has :setClockHandPosition;
   }
@@ -188,6 +194,9 @@ class OTPAuthView extends WatchUi.View {
         }
       }
       drawIndicator(dc);
+      if (enableDrawSelectHint && codeStore.size() > 1) {
+        drawSelectHint(dc);
+      }
     }
   }
 
@@ -300,6 +309,20 @@ class OTPAuthView extends WatchUi.View {
     } else {
       dc.drawCircle(x, y, indicatorSize);
     }
+  }
+
+  function drawSelectHint(dc as Dc) as Void {
+    var r = dc.getHeight() / 2;
+    dc.setPenWidth(INDICATOR_LINE_WIDTH / 2);
+    dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+    dc.drawArc(
+      dc.getWidth() / 2,
+      r,
+      r - INDICATOR_LINE_WIDTH / 4,
+      Graphics.ARC_COUNTER_CLOCKWISE,
+      21,
+      31
+    );
   }
 
   // Called when this View is removed from the screen. Save the
