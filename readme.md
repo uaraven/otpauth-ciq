@@ -1,5 +1,7 @@
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
 
+*This project is no longer in development*. Unfortunately, I don't have the time to support this project; there are many competing OTP applications for Garmin with better features and support for newer devices. I recommend you take a look at those applications.
+
 # 2FA Codes
 
 2FA codes is a Connect IQ widget that generates Time-based one-time passwords used for 2-factor authentication. It is compatible with Google Authenticator and other similar systems.
