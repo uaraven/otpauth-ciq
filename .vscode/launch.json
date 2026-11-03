@@ -14,6 +14,20 @@
         {
             "type": "monkeyc",
             "request": "launch",
+            "name": "Run App Fenix9",
+            "stopAtLaunch": false,
+            "device": "fenix943mm"
+        },
+        {
+            "type": "monkeyc",
+            "request": "launch",
+            "name": "Run App Fenix 8",
+            "stopAtLaunch": false,
+            "device": "fenix8pro47mm"
+        },
+        {
+            "type": "monkeyc",
+            "request": "launch",
             "name": "Run App on device",
             "stopAtLaunch": false,
             "device": "${command:GetTargetDevice}"
