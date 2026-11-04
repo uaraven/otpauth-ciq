@@ -7,14 +7,14 @@
         <property id="code1" type="string" />
         <property id="algo1" type="number">0</property>
         <property id="digits1" type="number">6</property>
-        <property id="timeStep2" type="number">30</property>
+        <property id="timeStep1" type="number">30</property>
 
         <property id="enabled2" type="boolean" />
         <property id="name2" type="string" />
         <property id="code2" type="string" />
         <property id="algo2" type="number">0</property>
         <property id="digits2" type="number">6</property>
-        <property id="timeStep1" type="number">30</property>
+        <property id="timeStep2" type="number">30</property>
 
         <property id="enabled3" type="boolean" />
         <property id="name3" type="string" />
