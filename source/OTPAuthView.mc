@@ -69,11 +69,7 @@ class OTPAuthView extends WatchUi.View {
 
     var r = min(dc.getWidth(), dc.getHeight());
     indicatorSize = r / 65;
-    if (codeStore.size() % 2 == 0) {
-      startingAngle = 270 + ((indicatorAngle / 2) * codeStore.size()) / 2;
-    } else {
-      startingAngle = 270 + indicatorAngle * (codeStore.size() / 2).toNumber();
-    }
+    updateStartingAngle();
     indicatorRadius = r / 2 - indicatorSize - 20;
     if (isInstinct) {
       if (WatchUi has :getSubscreen) {
@@ -100,6 +96,20 @@ class OTPAuthView extends WatchUi.View {
         }
       }
     }
+  }
+
+  private function updateStartingAngle() as Void {
+    if (codeStore.size() % 2 == 0) {
+      startingAngle = 270 + ((indicatorAngle / 2) * codeStore.size()) / 2;
+    } else {
+      startingAngle = 270 + indicatorAngle * (codeStore.size() / 2).toNumber();
+    }
+  }
+
+  // Re-read accounts after the settings have changed
+  function reload() as Void {
+    codeStore = new CodeStore();
+    updateStartingAngle();
   }
 
   function nextCode() {

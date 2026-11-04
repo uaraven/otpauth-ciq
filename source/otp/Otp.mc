@@ -9,7 +9,6 @@ import Base32;
 module Otp {
   const powers = [
     1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000,
-    1000000000,
   ];
 
   class BaseOtp {
@@ -77,7 +76,9 @@ module Otp {
         ((hash[offset + 2] & 0xff) << 8) |
         (hash[offset + 3] & 0xff);
 
-      var otp = binary % powers[getDigitCount()];
+      // 10^10 doesn't fit in a Number, but a 31-bit value is always below it
+      var otp =
+        getDigitCount() >= 10 ? binary : binary % powers[getDigitCount()];
       var format = "%0" + getDigitCount() + "d";
       return otp.format(format);
     }
@@ -211,10 +212,27 @@ module Otp {
       logger.debug(
         Lang.format("Expected: '$1$', actual: '$2$'", [expected, actual])
       );
+      return false;
     }
 
     expected = "67496144";
     actual = otp.codeForEpoch(100);
+    if (!expected.equals(actual)) {
+      logger.debug(
+        Lang.format("Expected: '$1$', actual: '$2$'", [expected, actual])
+      );
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  (:test)
+  function TestOtp10Digits(logger as Test.Logger) {
+    var key = "12345678901234567890";
+    var otp = new Totp(key.toUtf8Array(), 0, 10, 30);
+    var expected = "1094287082";
+    var actual = otp.codeForEpoch(59);
     if (!expected.equals(actual)) {
       logger.debug(
         Lang.format("Expected: '$1$', actual: '$2$'", [expected, actual])

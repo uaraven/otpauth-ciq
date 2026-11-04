@@ -10,10 +10,20 @@ class OTPAuthApp extends Application.AppBase {
     AppBase.initialize();
   }
 
+  private var view;
+
   function getInitialView() as [WatchUi.Views] or
     [WatchUi.Views, WatchUi.InputDelegates] {
-    var view = new OTPAuthView();
-    return [view, new OTPAuthInput(view)];
+    var authView = new OTPAuthView();
+    view = authView;
+    return [authView, new OTPAuthInput(authView)];
+  }
+
+  function onSettingsChanged() as Void {
+    if (view != null) {
+      view.reload();
+    }
+    WatchUi.requestUpdate();
   }
 
   function getGlanceView() {
